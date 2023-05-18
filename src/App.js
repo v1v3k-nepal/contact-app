@@ -4,7 +4,6 @@ import { LocalStorageContactWrapper } from './components/LocalStorageContactWrap
 function App() {
   return (
     <div className="App">
-        {/* <TodoWrapper/> */}
         <LocalStorageContactWrapper/>
     </div>
   );

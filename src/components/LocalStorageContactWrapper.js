@@ -9,8 +9,8 @@ uuidv4();
 
     const [contacts, setContacts] = useState([]);
     const [openModal, setOpenModal] = useState(false);
-    const [search, setSearch] = useState('');
-
+    const [searchValue, setSearchValue] = useState('');
+    const [filteredContacts, setFilteredContacts] = useState([]);
 
     useEffect(()=>{
         const savedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
@@ -56,10 +56,17 @@ uuidv4();
     }
 
     const editContact = (fullName, mobile, email, id)=>{
-        const localContact = contacts.map((contact)=>contact.id === id ? {...contact , fullName:[fullName], mobile:[mobile], email:[email], isEditing: !contact.isEditing}: contact);
+        const localContact = contacts.map((contact)=>contact.id === id ? {...contact , fullName:fullName, mobile:mobile, email:email, isEditing: !contact.isEditing}: contact);
         setContacts(localContact);
         localStorage.setItem('contacts',JSON.stringify(localContact));
     }
+
+    useEffect(()=>{
+        let filtered = (searchValue)?(contacts.filter((contact)=>contact.fullName.includes(searchValue))):contacts;
+        setFilteredContacts(filtered);
+    }, [contacts,searchValue]);
+
+    // const searchContact = contacts.filter((contact)=>contact.fullName.includes(searchValue));
 
   return (
     <div className='container'>
@@ -69,20 +76,17 @@ uuidv4();
             <Modal open={openModal} onClose={()=>setOpenModal(false)} addContact={addContact}/>
 
             <button type='submit' onClick={()=>setOpenModal(true)} className='contact-add-btn'>Add Contact</button>
-            <input className='search-contacts' type="text" placeholder='Search Contacts' value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+            <input className='search-contacts' type="text" placeholder='Search Contacts' onChange={(e)=>{setSearchValue(e.target.value)}}/>
 
-                {contacts.map((contact)=>{
-                    console.log("from contacts.map: "+ contact.fullName +  contact.isEditing);
+            {filteredContacts.map((contact)=>{
                     return(
                         contact.isEditing ? <EditContactForm onClose={(contact)=>toggleEditState(contact.id)} contact={contact} editContact={editContact} key={contact.id}/>:
                     <Contact contact={contact} deleteContact={deleteContact} toggleEditState={toggleEditState} toggleFavourite={toggleFavourite} key={contact.id}/>);                
-            })       
-        }
-            
+            })
+ }
+             
         </div>
     </div>
   )
 }
-
-// export default TodoWrapper;
 
