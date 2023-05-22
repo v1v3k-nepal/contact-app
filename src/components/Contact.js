@@ -1,5 +1,5 @@
-import { faCheckCircle, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faHeartCirclePlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 
@@ -15,7 +15,7 @@ export const Contact = (props) => {
         </div>
 
           <div className='icons'>
-              <FontAwesomeIcon icon={faCheckCircle} className={`${props.contact.favourite? '':'hide-checked-icon'}`}/>
+              <FontAwesomeIcon icon={faHeartCirclePlus} className={`${props.contact.favourite? 'activate-heart':''}`} onClick={()=>{props.toggleFavourite(props.contact.id)}}/>
               <FontAwesomeIcon icon={faPenToSquare} onClick={()=>{props.toggleEditState(props.contact.id)}}/>
               <FontAwesomeIcon icon={faTrash} onClick={()=>{props.deleteContact(props.contact.id)}}/>
           </div>
