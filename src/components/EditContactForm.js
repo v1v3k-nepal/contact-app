@@ -21,7 +21,7 @@ const EditContactForm = (props) => {
                <label htmlFor="phone">Mobile</label>
                <input type="text" placeholder='Phone Number' name='mobile' value={mobile} onChange={(e)=>setMobile(e.target.value)}/>
                <label htmlFor="email">Email</label>
-               <input type="text" placeholder='Email' name='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+               <input type="email" placeholder='Email' name='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                {/* <button className='modal-close-btn' onClick={props.onClose}>Close</button> */}
                <button className='modal-update-btn' type='submit'>Update</button>
             </form>

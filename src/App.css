@@ -144,6 +144,7 @@ label{
   margin-top: 15px;
   margin-right: 20px;
   background: linear-gradient(to right, #c00cfc, #f7d8fc);
+  cursor: pointer;
   
 }
 
@@ -153,6 +154,7 @@ label{
   background: linear-gradient(to right, #c00cfc, #f7d8fc);
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 425px){

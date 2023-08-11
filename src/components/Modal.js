@@ -21,11 +21,11 @@ const Modal = (props) => {
         <div className='modal-container'>            
             <form onSubmit={handleSubmit}>               
                <label htmlFor="name">Name</label>
-               <input type="text" placeholder='Full Name' name='fullName' value={fullName} onChange={(e)=>setFullName(e.target.value)}/>
+               <input type="text" placeholder='Full Name' name='fullName' onChange={(e)=>setFullName(e.target.value)}/>
                <label htmlFor="phone">Mobile</label>
-               <input type="text" placeholder='Phone Number' name='mobile' value={mobile} onChange={(e)=>setMobile(e.target.value)}/>
+               <input type="text" placeholder='Phone Number' name='mobile' onChange={(e)=>setMobile(e.target.value)}/>
                <label htmlFor="email">Email</label>
-               <input type="text" placeholder='Email' name='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+               <input type="email" placeholder='Email' name='email' onChange={(e)=>setEmail(e.target.value)}/>
                <button className='modal-close-btn' onClick={props.onClose}>Close</button>
                <button className='modal-submit-btn' type='submit'>Submit</button>
             </form>
